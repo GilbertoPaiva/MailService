@@ -1,5 +1,7 @@
 package com.br.mailservice.security.jwt;
 
+import com.br.mailservice.exception.TokenExpiredException;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -17,7 +19,7 @@ public class JwtUtils {
     @Value("${jwt.secret}")
     private String jwtSecret;
 
-    private final int jwtExpirationMs = 5 * 60 * 60 * 1000; // 5 horas
+    private final int jwtExpirationMs = 30 * 60 * 1000; // 30 minutos
 
     private Key getSigningKey() {
         byte[] keyBytes = Decoders.BASE64.decode(jwtSecret);
@@ -49,8 +51,9 @@ public class JwtUtils {
                     .build()
                     .parseClaimsJws(authToken);
             return true;
+        } catch (ExpiredJwtException e) {
+            throw new TokenExpiredException("Token expirado");
         } catch (JwtException e) {
-            // Trate as exceções conforme necessário
             return false;
         }
     }

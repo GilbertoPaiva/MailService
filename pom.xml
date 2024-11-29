@@ -61,6 +61,32 @@
             <version>2.1.0</version>
         </dependency>
 
+        <!-- Thymeleaf para templates HTML -->
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf</artifactId>
+            <version>3.1.2.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf-spring5</artifactId>
+            <version>3.0.15.RELEASE</version> <!-- Certifique-se de usar a última versão estável -->
+        </dependency>
+
+        <!-- Javax necessário para javax.mail -->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>javax.mail-api</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+
+        <!-- StarterMail contém todas as bibliotecas para trabalhar com e-mails -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+
         <!-- Dependências para testes -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
